@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willow's Escape</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="1920" height="1080"></canvas>
+        <div id="ui-overlay">
+            <div id="hud">
+                <div class="hud-item">Score: <span id="score">0</span></div>
+                <div class="hud-item">Items: <span id="items">0</span>/100</div>
+                <div class="hud-item">Time: <span id="timer">00:00</span></div>
+                <div class="hud-item" id="alert-indicator">⚠️ CHARLOTTE NEARBY</div>
+            </div>
+            <div id="title-screen" class="screen active">
+                <h1>🐰 Willow's Escape</h1>
+                <p>Help Willow collect all the food and escape the farm!</p>
+                <button id="btn-play">Play Game</button>
+                <button id="btn-instructions">Instructions</button>
+                <button id="btn-leaderboard">Leaderboard</button>
+            </div>
+            <div id="instructions-screen" class="screen">
+                <h2>How to Play</h2>
+                <div class="controls">
+                    <p><strong>WASD</strong> - Move Willow</p>
+                    <p><strong>SPACE</strong> - Jump over fences and hay bales</p>
+                    <p><strong>B</strong> - Burrow (hide from Charlotte)</p>
+                </div>
+                <p>Collect all 100 items, then find the home burrow to escape!</p>
+                <button id="btn-back">Back</button>
+            </div>
+            <div id="gameover-screen" class="screen">
+                <h1>😢 Oh no!</h1>
+                <p>Charlotte caught you!</p>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <button id="btn-restart">Try Again</button>
+            </div>
+            <div id="win-screen" class="screen">
+                <h1>🎉 You Escaped!</h1>
+                <p>Willow made it home safely!</p>
+                <p>Final Score: <span id="win-score">0</span></p>
+                <button id="btn-play-again">Play Again</button>
+            </div>
+            <div id="leaderboard-screen" class="screen">
+                <h2>🏆 High Scores</h2>
+                <ol id="leaderboard-list"></ol>
+                <button id="btn-leaderboard-back">Back</button>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { Game } from './src/game.js';
+        import { UIManager } from './src/ui.js';
+        
+        // Initialize game when page loads
+        const canvas = document.getElementById('gameCanvas');
+        const game = new Game(canvas);
+        
+        // Initialize UI
+        const uiManager = new UIManager(game);
+        
+        // Expose for debugging
+        window.game = game;
+        
+        // Handle window resize
+        function resizeCanvas() {
+            const aspect = 1920 / 1080;
+            const windowAspect = window.innerWidth / window.innerHeight;
+            
+            if (windowAspect > aspect) {
+                canvas.style.height = '100vh';
+                canvas.style.width = `${100 * aspect}vh`;
+            } else {
+                canvas.style.width = '100vw';
+                canvas.style.height = `${100 / aspect}vw`;
+            }
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        // Start the render loop for title screen
+        game.renderer = null; // Will be set when game starts
+    </script>
+</body>
+</html>
