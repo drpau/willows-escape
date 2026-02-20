@@ -37,17 +37,17 @@ export const TILES = {
 
 // AI Settings
 export const CHARLOTTE_SIZE = 50;
-export const CHARLOTTE_BASE_SPEED = 180; // was 120
-export const CHARLOTTE_MAX_SPEED = 450; // was 350
-export const CHARLOTTE_VISION_ANGLE = 80; // was 60 - wider vision
-export const CHARLOTTE_VISION_DISTANCE = 350; // was 300 - see further
-export const CHARLOTTE_HEARING_RADIUS = 200; // was 150 - hear better
+export const CHARLOTTE_BASE_SPEED = 220; // was 180 - faster base speed
+export const CHARLOTTE_MAX_SPEED = 500; // was 450 - faster max
+export const CHARLOTTE_VISION_ANGLE = 90; // was 80 - wider vision
+export const CHARLOTTE_VISION_DISTANCE = 400; // was 350 - see further
+export const CHARLOTTE_HEARING_RADIUS = 250; // was 200 - hear better
 
 // Speed scaling
-export const SPEED_INCREASE_INTERVAL = 8; // was 10 - faster scaling
-export const SPEED_INCREMENT_SMALL = 10; // was 5
-export const SPEED_INCREMENT_LARGE = 20; // was 15
-export const ITEMS_PER_SPEED_BUMP = 10;
+export const SPEED_INCREASE_INTERVAL = 6; // was 8 - faster scaling
+export const SPEED_INCREMENT_SMALL = 15; // was 10
+export const SPEED_INCREMENT_LARGE = 25; // was 20
+export const ITEMS_PER_SPEED_BUMP = 8; // was 10
 
 // Game states
 export const GAME_STATE = {

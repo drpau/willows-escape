@@ -61,6 +61,9 @@ export class Renderer {
             this.ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
             this.ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         }
+        
+        // Draw mini-map
+        this.drawMiniMap(game);
     }
     
     isOnScreen(x, y) {
